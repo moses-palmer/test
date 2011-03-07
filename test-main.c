@@ -72,7 +72,7 @@ test_printf(const char *format, ...)
 }
 
 int
-test_run(int log_level)
+test_main(int log_level)
 {
     int result;
     int count, failures, i;
@@ -166,7 +166,7 @@ static int
 main(int argc, char *argv[],
     int log_level)
 {
-    return test_run(log_level);
+    return test_main(log_level);
 }
 
 #endif

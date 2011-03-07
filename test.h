@@ -94,7 +94,6 @@ test_teardown(void)
  * @see test_main
  */
 int
-test_main(const char *header, const char *success, const char *failure,
-    int log_level);
+test_main(int log_level);
 
 #endif
