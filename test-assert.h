@@ -83,8 +83,6 @@ test_printf(const char *format, ...);
 
 /**
  * Fails the entire test suite.
- *
- * This may be called both during setup and test run.
  */
 #define abort() \
     internal.result = TR_ABORT; \

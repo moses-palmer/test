@@ -87,16 +87,6 @@ test_teardown(void)
  * Please note that test_main is only a placeholder name; the actual name of
  * this function will be the value of the test_main macro.
  *
- * @param header
- *     The format string used to print the header before every test. The print
- *     function will be passed an integer, which is the test index, and a
- *     string, which is the name of the test.
- * @param success
- *     The message printed after the test upon success.
- * @param failure
- *     The message printed after the test upon failure. The print function will
- *     be passed an integer, which is the line number on which the test failed,
- *     and a string, which is the error message.
  * @param log_level
  *     The log level to use.
  * @return the number of tests that failed
