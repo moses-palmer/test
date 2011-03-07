@@ -56,6 +56,9 @@ static TestFunction test_functions[] = {
     {NULL, NULL, NULL}
 };
 
+/**
+ * The number of test functions.
+ */
 #define test_count (sizeof(test_functions) / sizeof(test_functions[0]) - 1)
 
 
