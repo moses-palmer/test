@@ -17,7 +17,7 @@
  * guarded section are available.
  */
 #undef TEST
-#define TEST(name, description, locals, setup, test, teardown)
+#define TEST(name, description, locals, test, teardown)
 #include "tests.def"
 
 /*

@@ -19,7 +19,7 @@
 /* Forward declare all test functions and define the test function table.     */
 /******************************************************************************/
 #undef TEST
-#define TEST(name, description, locals, setup, test, teardown) \
+#define TEST(name, description, locals, test, teardown) \
     static int \
     test_function(name)(char **message, int log_level);
 
@@ -49,7 +49,7 @@ typedef struct {
 
 #include "tests.def"
 #undef TEST
-#define TEST(name, description, locals, setup, test, teardown) \
+#define TEST(name, description, locals, test, teardown) \
     {#name, description, test_function(name)},
 static TestFunction test_functions[] = {
     #include "tests.def"
@@ -63,7 +63,7 @@ static TestFunction test_functions[] = {
 /* Define the test functions.                                                 */
 /******************************************************************************/
 #undef TEST
-#define TEST(name, description, locals, setup, test, teardown) \
+#define TEST(name, description, locals, test, teardown) \
     static int \
     test_function(name)(char **message, int log_level) \
     { \
@@ -76,38 +76,19 @@ static TestFunction test_functions[] = {
         \
         *message = NULL; \
         \
-        trace("Running setup"); \
-        log_indent(); \
-        do { \
-            setup \
-            log_unindent(); \
-            trace("Setup completed"); \
-        } while (0); \
-        if (internal.result != TR_PASS) log_unindent(); \
-        \
-        if (internal.result != TR_PASS) { \
-            trace("Setup failed - running teardown"); \
-            log_indent(); \
-            teardown \
-            log_unindent(); \
-            trace("Setup failed - teardown completed"); \
-            return internal.result; \
-        } \
-        \
         trace("Running test"); \
         log_indent(); \
         do { \
             test \
-            log_unindent(); \
-            trace("Test completed"); \
         } while (0); \
-        if (internal.result != TR_PASS) log_unindent(); \
+        log_unindent(); \
         \
         trace("Running teardown"); \
         log_indent(); \
-        teardown \
+        do { \
+            teardown \
+        } while (0); \
         log_unindent(); \
-        trace("Teardown completed"); \
         \
         return internal.result; \
     }
