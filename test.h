@@ -18,7 +18,7 @@
  */
 #undef TEST
 #define TEST(name, description, locals, test, teardown)
-#include "tests.def"
+#include "../tests.def"
 
 /*
  * Make sure that the test suite name is defined.

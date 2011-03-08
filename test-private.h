@@ -47,12 +47,12 @@ typedef struct {
     int (*function)(char **message, int log_level);
 } TestFunction;
 
-#include "tests.def"
+#include "../tests.def"
 #undef TEST
 #define TEST(name, description, locals, test, teardown) \
     {#name, description, test_function(name)},
 static TestFunction test_functions[] = {
-    #include "tests.def"
+    #include "../tests.def"
     {NULL, NULL, NULL}
 };
 
@@ -95,6 +95,6 @@ static TestFunction test_functions[] = {
         \
         return internal.result; \
     }
-#include "tests.def"
+#include "../tests.def"
 
 #endif
