@@ -33,11 +33,6 @@
 #define test_suite TEST_SS(TEST_SUITE)
 
 /**
- * The name of the test suite function.
- */
-#define test_main TEST_SUITE##_suite_run
-
-/**
  * The number of times to rerun the test suite.
  *
  * The order of the tests is shuffled after every iteration has completed. By
