@@ -55,7 +55,7 @@ test_printf(const char *format, ...)
         va_end(ap);
 
         /* If that worked, return the string. */
-        if (n > -1 && n < size) {
+        if (n > -1 && n < (int)size) {
             return p;
         }
 
