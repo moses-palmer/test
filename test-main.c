@@ -107,7 +107,7 @@ test_main(int log_level)
             char *message =
                 NULL;
 
-            info("%d: %s - %s", test_order[i], name, description);
+            info("%s - %s", name, description);
 
             /* Run the test */
             log_indent();
