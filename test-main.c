@@ -78,7 +78,7 @@ test_main(int log_level)
     int count, failures, i;
 
     /* Initialise the test suite */
-    trace("Running test suite " test_suite);
+    debug("Running test suite " test_suite " with %d tests", test_count);
     result = test_setup();
     if (result) {
         debug("Test suite " test_suite " failed to setup: %d", result);
@@ -117,7 +117,7 @@ test_main(int log_level)
             switch (result) {
             case TR_PASS:
                 /* The test passed */
-                info("%d: %s: Test passed", test_order[i], name);
+                trace("%s: Test passed", name);
                 failures--;
                 break;
 
@@ -130,7 +130,7 @@ test_main(int log_level)
                 break;
 
             default:
-                info("%d: %s: Unknown error code: %d (%s)", test_order[i], name,
+                error("%s: Unknown error code: %d (%s)", name,
                      result, message ? message : "no error specified");
                 break;
             }
