@@ -1,0 +1,115 @@
+Automatic unit testing of C code
+================================
+
+These header files allow you to setup test suites. You define the tests in one
+file, tests.def, or any files included in that file using the TEST macro, and
+they will be automatically run and a report generated.
+
+
+1. File structure of test.def
+=============================
+
+The typical structure of tests.def will be as follows:
+
+#ifndef TEST_HELPERS
+#define TEST_HELPERS
+
+/* Helper functions, includes and defines */
+
+#endif
+
+TEST(...)
+
+/* ... */
+
+TEST(...)
+
+/* End of file */
+
+The order of the macros determines the order of the tests when running.
+
+
+2. The TEST macro
+=================
+
+The test defining macro takes the following parameters:
+
+name
+    The name of the test. This must be a valid symbol name.
+
+    For unit tests of functions, it should be on the form functionName0,
+    functionName1, and so on.
+
+description
+    A short description of the test without an ending dot.
+
+    This is useful when there are many tests for one function to distinguish
+    which of the different aspects of the functions that is tested.
+
+locals
+    Local resources.
+
+    Declare all variables that need initialisation and finalisation here. To
+    make teardown after the test easier, it is a good idea to initialise them to
+    NULL or 0.
+
+    Please note that this is within a macro, so you must not use commas outside
+    of parenteses; thus all variables must be declared separately.
+
+test
+    The actual test code.
+
+    Write the test here, and use the various assert-macros to define the
+    required state. If an assertion fails, the test will be terminated and the
+    teardown run.
+
+    You may declare local variables in this block, but their scope will be the
+    test block only.
+
+teardown
+    The finalisation code.
+
+    Use this block to free all resources that you have claimed during the test.
+
+
+3. Defines recognised
+=====================
+
+The following is a list of defines that are recognised by test.h. They should be
+defined in tests.def. Their default values are included.
+
+TEST_SUITE
+    The name of the test suite. It must be a valid symbol name.
+
+    This is not defined by default, but it is required.
+
+TEST_ITERATIONS=1
+    The number of times to run the test suite.
+
+    Every time the suite has completed, the order of the tests is randomised.
+    You may define TEST_ITERATIONS to a value greater than 1 to check that no
+    tests depend on the order of the tests.
+
+TEST_NO_SETUP
+    Define this if your application needs no setup before the test suite can be
+    run. This kind of setup could be initialising an external library.
+
+    If you do not define this, you have to specify the function
+    static int test_setup(). If its return value is not 0, the test suite will
+    exit with the inverse of that return code.
+
+TEST_NO_TEARDOWN
+    Define this if your application needs no teardown after test_setup has been
+    called. If test_setup exited successfully, this function will always be
+    called as static void test_teardown(void).
+
+test_main
+    The name of the test suite function. It must be a valid symbol name.
+
+    This is not defined by default, but it is required.
+
+TEST_RUN
+    Whether to automatically run the test suite.
+
+    If you do this, a main function will be defined in test-main.c. The program
+    will take the parameters defined in arguments.def.
