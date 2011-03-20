@@ -34,7 +34,7 @@ test_randomize(void)
     }
 }
 
-char*
+static char*
 test_printf(const char *format, ...)
 {
     size_t size = 64;
