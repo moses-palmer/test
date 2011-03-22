@@ -84,6 +84,7 @@ static TestFunction test_functions[] = {
         do { \
             test \
         } while (0); \
+    end: \
         log_unindent(); \
         \
         trace("Running teardown"); \

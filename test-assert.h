@@ -48,7 +48,7 @@ test_printf(const char *format, ...);
         *message = test_printf(format, __VA_ARGS__); \
         internal.result = TR_FAIL; \
         debug(format, __VA_ARGS__); \
-        break; \
+        goto end; \
     } \
     else do {} while(0)
 
