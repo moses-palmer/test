@@ -69,6 +69,8 @@ test_printf(const char *format, ...);
  *     The strings to compare.
  */
 #define assert_streq(s1, s2) \
+    assert(s1 != NULL); \
+    assert(s2 != NULL); \
     assert_true(strcmp(s1, s2) == 0, "%s is not %s", s1, s2)
 
 /**
@@ -78,6 +80,8 @@ test_printf(const char *format, ...);
  *     The strings to compare.
  */
 #define assert_wcseq(s1, s2) \
+    assert(s1 != NULL); \
+    assert(s2 != NULL); \
     assert_true(wcscmp(s1, s2) == 0, "%ls is not %ls", s1, s2)
 
 
