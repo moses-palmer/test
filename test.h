@@ -50,7 +50,11 @@
  * Unless you define TEST_NO_SETUP, you must implement this function.
  *
  * @return 0 if the setup succeded, or an error code otherwise; the test suite
- *     is not run if an error code is returned
+ *     is not run if an error code is returned. The special value -1 is treated
+ *     as "skip this test suite". If this is returned, a message will be printed
+ *     the the test suite will succeed. This is useful if a test suite depends
+ *     on external resources that may not be available when the full test suite
+ *     set is run.
  */
 static int
 test_setup(void)

@@ -81,8 +81,14 @@ test_main(int log_level)
     debug("Running test suite " test_suite " with %d tests", test_count);
     result = test_setup();
     if (result) {
-        debug("Test suite " test_suite " failed to setup: %d", result);
-        return -result;
+        if (result == -1) {
+            debug("Test suite " test_suite " will be skipped");
+            return 0;
+        }
+        else {
+            debug("Test suite " test_suite " failed to setup: %d", result);
+            return result;
+        }
     }
 
     /* Initialise the test order */
