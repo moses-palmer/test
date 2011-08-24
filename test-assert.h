@@ -63,6 +63,22 @@ test_printf(const char *format, ...);
     assert_true(expression, "Assertion %s failed", #expression)
 
 /**
+ * Asserts that two expression evaluate to the same value.
+ *
+ * The expressions must evaluate to a value that is typecastable to
+ * long long int.
+ *
+ * @param e1, e2
+ *     The expressions to compare.
+ */
+#define assert_eq(e1, e2) \
+    do { \
+        long long int v1 = (long long int)e1; \
+        long long int v2 = (long long int)e2; \
+        assert_true(v1 == v2, "%s is not %s", #e1, #e2); \
+    } while (0)
+
+/**
  * Asserts that two strings are equal.
  *
  * @param s1, s2
