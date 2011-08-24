@@ -90,6 +90,6 @@ test_printf(const char *format, ...);
  */
 #define abort() \
     internal.result = TR_ABORT; \
-    break
+    goto end
 
 #endif
