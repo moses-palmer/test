@@ -86,6 +86,31 @@ test_printf(const char *format, ...);
 
 
 /**
+ * Passes the current test without reaching the end.
+ *
+ * @param format
+ *     The format string used for the message. This is the same format as used
+ *     by printf.
+ * @param ...
+ *     Any extra parameters to printf.
+ */
+#define pass(format, ...) \
+    debug(format, __VA_ARGS__); \
+    goto end
+
+/**
+ * Fails the current test unconditionally.
+ *
+ * @param format
+ *     The format string used for the error message. This is the same format as
+ *     used by printf.
+ * @param ...
+ *     Any extra parameters to printf.
+ */
+#define fail(format, ...) \
+    assert_true(0, format, __VA_ARGS__)
+
+/**
  * Fails the entire test suite.
  */
 #define abort() \
