@@ -37,17 +37,14 @@ test_printf(const char *format, ...);
  *
  * @param expression
  *     The expression to evaluate. It is only evaluated once.
- * @param format
- *     The format string used for the error message. This is the same format as
- *     used by printf.
  * @param ...
- *     Any extra parameters to printf.
+ *     Parameters to pass to printf.
  */
-#define assert_true(expression, format, ...) \
+#define assert_true(expression, ...) \
     if (!(expression)) { \
-        *message = test_printf(format, __VA_ARGS__); \
+        *message = test_printf(__VA_ARGS__); \
         internal.result = TR_FAIL; \
-        debug(format, __VA_ARGS__); \
+        debug(__VA_ARGS__); \
         goto end; \
     } \
     else do {} while(0)
@@ -104,27 +101,21 @@ test_printf(const char *format, ...);
 /**
  * Passes the current test without reaching the end.
  *
- * @param format
- *     The format string used for the message. This is the same format as used
- *     by printf.
  * @param ...
- *     Any extra parameters to printf.
+ *     Parameters to pass to printf.
  */
-#define pass(format, ...) \
-    debug(format, __VA_ARGS__); \
+#define pass(...) \
+    debug(__VA_ARGS__); \
     goto end
 
 /**
  * Fails the current test unconditionally.
  *
- * @param format
- *     The format string used for the error message. This is the same format as
- *     used by printf.
  * @param ...
- *     Any extra parameters to printf.
+ *     Parameters to pass to printf.
  */
-#define fail(format, ...) \
-    assert_true(0, format, __VA_ARGS__)
+#define fail(...) \
+    assert_true(0, __VA_ARGS__)
 
 /**
  * Fails the entire test suite.
