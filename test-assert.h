@@ -89,6 +89,7 @@ test_printf(const char *format, ...);
  * Fails the entire test suite.
  */
 #define abort() \
+    debug("Aborting test suite"); \
     internal.result = TR_ABORT; \
     goto end
 
