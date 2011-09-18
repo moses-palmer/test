@@ -24,8 +24,8 @@ enum {
  */
 #define log(level, ...) \
     if (log_level >= (level)) do { \
-        int i = log_indent_value; \
-        while (i--) putc('\t', stdout); \
+        int _i = log_indent_value; \
+        while (_i--) putc('\t', stdout); \
         \
         printf(__VA_ARGS__); \
         printf("\n"); \
