@@ -17,21 +17,6 @@ enum {
 };
 
 /**
- * Allocates a string and prints format with the variable argument list into it.
- *
- * The caller must free the returned string with free.
- *
- * @param format
- *     The print format to use. This is the same format as used by printf.
- * @param ...
- *     Any extra parameters to printf.
- * @return a newly allocated string or NULL if there is not enough memory
- * @see printf
- */
-char*
-test_printf(const char *format, ...);
-
-/**
  * Asserts that an expression is true. If the expression is false, the test
  * fails and the error message specified is printed.
  *

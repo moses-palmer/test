@@ -3,6 +3,21 @@
 #include <stdio.h>
 
 /**
+ * Allocates a string and prints format with the variable argument list into it.
+ *
+ * The caller must free the returned string with free.
+ *
+ * @param format
+ *     The print format to use. This is the same format as used by printf.
+ * @param ...
+ *     Any extra parameters to printf.
+ * @return a newly allocated string or NULL if there is not enough memory
+ * @see printf
+ */
+static char*
+test_printf(const char *format, ...);
+
+/**
  * The current indentation of the log messages.
  */
 static int log_indent_value = 0;
