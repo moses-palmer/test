@@ -187,7 +187,13 @@ static int
 main(int argc, char *argv[],
     int log_level)
 {
-    return test_main(log_level);
+    int result;
+
+    result = test_main(log_level);
+    printf(
+        "Test suite %s completed with %d failed test(s).\n"
+        "Press return to continue...", test_suite, result);
+    fgetc(stdin);
 }
 
 #endif
