@@ -194,6 +194,8 @@ main(int argc, char *argv[],
         "Test suite %s completed with %d failed test(s).\n"
         "Press return to continue...", test_suite, result);
     fgetc(stdin);
+
+    return result;
 }
 
 #endif
