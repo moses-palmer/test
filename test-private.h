@@ -84,6 +84,7 @@ static TestFunction test_functions[] = {
         do { \
             test \
         } while (0); \
+        goto end; \
     end: \
         log_unindent(); \
         \
