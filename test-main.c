@@ -189,6 +189,8 @@ main(int argc, char *argv[],
 {
     int result;
 
+    printf(
+        "Running test suite %s with %d tests...\n", test_suite, test_count);
     result = test_main(log_level);
     printf(
         "Test suite %s completed with %d failed test(s).\n"
