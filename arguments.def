@@ -1,9 +1,9 @@
-_A(int, log_level, ARGUMENT_NO_SHORT_OPTION,
-    1,
-    ARGUMENT_IS_OPTIONAL,
+ARGUMENT(int, log_level, ARGUMENT_NO_SHORT_OPTION,
     "<level>\n"
     "The level of detail for log output. It must be a value between 0 and 4, "
     "where 1 signifies no output whatsoever and 4 trace printouts.",
+    1,
+    ARGUMENT_IS_OPTIONAL,
 
     *target = LL_ERROR;
 
