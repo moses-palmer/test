@@ -17,11 +17,7 @@
 static char*
 test_printf(const char *format, ...);
 
-/**
- * The current indentation of the log messages.
- */
-static int log_indent_value = 0;
-
+#include "test-logging.h"
 #include "test-private.h"
 
 /**
@@ -87,7 +83,7 @@ test_printf(const char *format, ...)
 }
 
 int
-test_main(int log_level)
+test_main(void)
 {
     int result;
     int count, failures, i;
@@ -123,7 +119,7 @@ test_main(int log_level)
                 test_functions[test_order[i]].name;
             const char *description =
                 test_functions[test_order[i]].description;
-            int (*function)(char**, int) =
+            int (*function)(char**) =
                 test_functions[test_order[i]].function;
             char *message =
                 NULL;
@@ -132,7 +128,7 @@ test_main(int log_level)
 
             /* Run the test */
             log_indent();
-            result = function(&message, log_level);
+            result = function(&message);
             log_unindent();
 
             switch (result) {
@@ -183,6 +179,12 @@ test_main(int log_level)
 #define ARGUMENTS_NO_TEARDOWN
 #include "arguments/arguments.h"
 
+/*
+ * Declared in test-logging.h.
+ */
+int test_log_level = LL_INFO;
+int test_log_indent_value = 0;
+
 static int
 main(int argc, char *argv[],
     int log_level)
@@ -191,7 +193,7 @@ main(int argc, char *argv[],
 
     printf(
         "Running test suite %s with %d tests...\n", test_suite, test_count);
-    result = test_main(log_level);
+    result = test_main();
     printf(
         "Test suite %s completed with %d failed test(s).\n"
         "Press return to continue...", test_suite, result);

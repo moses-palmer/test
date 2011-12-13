@@ -21,7 +21,7 @@
 #undef TEST
 #define TEST(name, description, locals, test, teardown) \
     static int \
-    test_function(name)(char **message, int log_level);
+    test_function(name)(char **message);
 
 typedef struct {
     /**
@@ -40,11 +40,9 @@ typedef struct {
      * @param message
      *     The error message if the result is not zero. If this is not NULL, it
      *     will be freed by the caller using free().
-     * @param log_level
-     *     The current log level.
      * @return 0 or an error code
      */
-    int (*function)(char **message, int log_level);
+    int (*function)(char **message);
 } TestFunction;
 
 #include "../tests.def"
@@ -68,7 +66,7 @@ static TestFunction test_functions[] = {
 #undef TEST
 #define TEST(name, description, locals, test, teardown) \
     static int \
-    test_function(name)(char **message, int log_level) \
+    test_function(name)(char **message) \
     { \
         struct { \
             int result; \

@@ -86,13 +86,10 @@ test_teardown(void)
  * Please note that test_main is only a placeholder name; the actual name of
  * this function will be the value of the test_main macro.
  *
- * @param log_level
- *     The log level to use.
  * @return the number of tests that failed
- * @see log
  * @see test_main
  */
 int
-test_main(int log_level);
+test_main(void);
 
 #endif

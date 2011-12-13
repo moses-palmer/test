@@ -113,3 +113,11 @@ TEST_RUN
 
     If you do this, a main function will be defined in test-main.c. The program
     will take the parameters defined in arguments.def.
+
+    Please note that this cannot be used if you are running a test suite
+    spanning several libraries, since that would cause int main(...) to be
+    defined more than once.
+
+    Also note that if you do not define this, the variables test_log_level and
+    test_log_indent_value will not be defined automatically, and you will need
+    to declare them in the C file that contains your main function.

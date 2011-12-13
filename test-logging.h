@@ -9,10 +9,20 @@ enum {
     LL_TRACE
 };
 
+/**
+ * The current log level.
+ */
+extern int test_log_level;
+
+/**
+ * The current indentation of the log messages.
+ */
+extern int test_log_indent_value;
+
 #define log_indent() \
-    log_indent_value++
+    test_log_indent_value++
 #define log_unindent() \
-    log_indent_value--
+    test_log_indent_value--
 
 /**
  * Prints a log message if the current log level is at least level.
@@ -23,8 +33,8 @@ enum {
  *     Parameters passed on to printf.
  */
 #define log(level, ...) \
-    if (log_level >= (level)) do { \
-        int _i = log_indent_value; \
+    if (test_log_level >= (level)) do { \
+        int _i = test_log_indent_value; \
         while (_i--) putc('\t', stdout); \
         \
         printf(__VA_ARGS__); \
