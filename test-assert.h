@@ -57,7 +57,8 @@ enum {
     do { \
         long long int v1 = (long long int)e1; \
         long long int v2 = (long long int)e2; \
-        assert_true(v1 == v2, "%s is not %s", #e1, #e2); \
+        assert_true(v1 == v2, "%s is not %s (%lld != %lld)", \
+            #e1, #e2, v1, v2); \
     } while (0)
 
 /**
