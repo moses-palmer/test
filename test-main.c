@@ -89,7 +89,7 @@ test_main(void)
     int count, failures, i;
 
     /* Initialise the test suite */
-    debug("Running test suite " test_suite " with %d tests", test_count);
+    debug("Running test suite " test_suite " with %lu tests", test_count);
     result = test_setup();
     if (result) {
         if (result == -1) {
