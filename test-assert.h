@@ -55,9 +55,9 @@ enum {
  */
 #define assert_eq(e1, e2) \
     do { \
-        long long int v1 = (long long int)e1; \
-        long long int v2 = (long long int)e2; \
-        assert_true(v1 == v2, "%s is not %s (%lld != %lld)", \
+        long int v1 = (long int)(ptrdiff_t)e1; \
+        long int v2 = (long int)(ptrdiff_t)e2; \
+        assert_true(v1 == v2, "%s is not %s (%ld != %ld)", \
             #e1, #e2, v1, v2); \
     } while (0)
 
