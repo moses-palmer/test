@@ -103,6 +103,10 @@ TEST_NO_TEARDOWN
     called. If test_setup exited successfully, this function will always be
     called as static void test_teardown(void).
 
+TEST_NONINTERACTIVE
+    Define this to prevent the program build when TEST_RUN is defined from
+    asking the user to press return when the test suite has completed.
+
 test_main
     The name of the test suite function. It must be a valid symbol name.
 

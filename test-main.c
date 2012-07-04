@@ -195,9 +195,13 @@ main(int argc, char *argv[],
         "Running test suite %s with %d tests...\n", test_suite, test_count);
     result = test_main();
     printf(
-        "Test suite %s completed with %d failed test(s).\n"
-        "Press return to continue...", test_suite, result);
+        "Test suite %s completed with %d failed test(s).\n",
+        test_suite, result);
+
+#ifndef TEST_NONINTERACTIVE
+    printf("Press return to continue...");
     fgetc(stdin);
+#endif
 
     return result;
 }
