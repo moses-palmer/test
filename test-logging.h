@@ -2,11 +2,11 @@
 #define TEST_LOGGING_H
 
 enum {
-    LL_NONE,
-    LL_ERROR,
-    LL_INFO,
-    LL_DEBUG,
-    LL_TRACE
+    TLL_NONE,
+    TLL_ERROR,
+    TLL_INFO,
+    TLL_DEBUG,
+    TLL_TRACE
 };
 
 /**
@@ -50,7 +50,7 @@ extern int test_log_indent_value;
  * @see log
  */
 #define error(...) \
-    log(LL_ERROR, __VA_ARGS__)
+    log(TLL_ERROR, __VA_ARGS__)
 
 /**
  * Prints a log message if the current log level is at least LL_INFO.
@@ -60,7 +60,7 @@ extern int test_log_indent_value;
  * @see log
  */
 #define info(...) \
-    log(LL_INFO, __VA_ARGS__)
+    log(TLL_INFO, __VA_ARGS__)
 
 /**
  * Prints a log message if the current log level is at least LL_DEBUG.
@@ -70,7 +70,7 @@ extern int test_log_indent_value;
  * @see log
  */
 #define debug(...) \
-    log(LL_DEBUG, __VA_ARGS__)
+    log(TLL_DEBUG, __VA_ARGS__)
 
 /**
  * Prints a log message if the current log level is at least LL_TRACE.
@@ -80,7 +80,7 @@ extern int test_log_indent_value;
  * @see log
  */
 #define trace(...) \
-    log(LL_TRACE, __VA_ARGS__)
+    log(TLL_TRACE, __VA_ARGS__)
 
 #endif
 
