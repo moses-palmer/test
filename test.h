@@ -5,6 +5,15 @@
 #include "test-assert.h"
 
 /**
+ * Defines an array in a test macro.
+ *
+ * This is needed because commas in array initialisers will be interpreted as
+ * TEST macro argument separators.
+ */
+#define TEST_ARRAY(...) \
+    { __VA_ARGS__ }
+
+/**
  * Converts an expression to a string.
  */
 #define TEST_S(n) \
