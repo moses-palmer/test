@@ -5,12 +5,12 @@ ARGUMENT(int, log_level, ARGUMENT_NO_SHORT_OPTION,
     1,
     ARGUMENT_IS_OPTIONAL,
 
-    *target = LL_ERROR;
+    *target = TLL_ERROR;
 
     ,
 
     *target = atoi(value_strings[0]);
-    is_valid = *target >= LL_NONE && *target <= LL_TRACE;
+    is_valid = *target >= TLL_NONE && *target <= TLL_TRACE;
 
     ,
 )
